@@ -29,3 +29,8 @@ class ProductPageLocators():
     AFTER_NAME_SELECTOR = (By.CSS_SELECTOR, 'div.alertinner > strong')
     AFTER_PRICE_SELECTOR = (By.CSS_SELECTOR, 'div.alertinner > p > strong')
     SUCCESSFUL_MESSAGE = (By.CSS_SELECTOR, 'div.alertinner')
+
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")

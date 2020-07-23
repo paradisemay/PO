@@ -41,7 +41,7 @@ class BasePage():
         return True
 
     def go_to_login_page(self):
-        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
 
     def should_be_login_link(self):
@@ -54,3 +54,7 @@ class BasePage():
         text = self.browser.find_element(*BasePageLocators.BASKET_TEXT).text
         assert BasePageLocators.TRUE_BASKET_TEXT in text, f'Basket is not empty: {text}'
         assert self.is_not_element_present(*BasePageLocators.ELEMENTS_IN_BASKET)
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"

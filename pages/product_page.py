@@ -1,7 +1,3 @@
-import math
-
-from selenium.common.exceptions import NoAlertPresentException
-
 from .base_page import BasePage
 from .locators import ProductPageLocators
 
@@ -12,23 +8,8 @@ class ProductPage(BasePage):
         self.should_be_correct_name()
         self.should_be_correct_price()
         self.click_to_basket_button()
-        self.solve_quiz_and_get_code()
         self.should_be_successful_message()
         print(f'Name: {self.name}; Price: {self.price}')
-
-    def solve_quiz_and_get_code(self):
-        alert = self.browser.switch_to.alert
-        x = alert.text.split(" ")[2]
-        answer = str(math.log(abs((12 * math.sin(float(x))))))
-        alert.send_keys(answer)
-        alert.accept()
-        try:
-            alert = self.browser.switch_to.alert
-            alert_text = alert.text
-            print(f"Your code: {alert_text}")
-            alert.accept()
-        except NoAlertPresentException:
-            print("No second alert presented")
 
     def should_be_basket_button(self):
         assert self.is_element_present(*ProductPageLocators.BASKET_BUTTON), 'Basket button not present'

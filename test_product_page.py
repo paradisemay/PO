@@ -20,13 +20,13 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page = ProductPage(browser, ProductPageLocators.LINK)
     page.open()
     page.click_to_basket_button()
-    assert page.is_not_element_present(*ProductPageLocators.SUCCESSFUL_MESSAGE, timeout=4)
+    page.should_not_be_successful_message_1()
 
 
 def test_guest_cant_see_success_message(browser):
     page = ProductPage(browser, ProductPageLocators.LINK)
     page.open()
-    assert page.is_not_element_present(*ProductPageLocators.SUCCESSFUL_MESSAGE, timeout=4)
+    page.should_not_be_successful_message_2()
 
 
 @pytest.mark.xfail()
@@ -34,7 +34,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page = ProductPage(browser, ProductPageLocators.LINK)
     page.open()
     page.click_to_basket_button()
-    assert page.is_disappeared(*ProductPageLocators.SUCCESSFUL_MESSAGE, timeout=4)
+    page.should_not_be_successful_message_3()
 
 
 def test_guest_should_see_login_link_on_product_page(browser):
@@ -81,4 +81,4 @@ class TestUserAddToBasketFromProductPage():
         page = ProductPage(self.browser,
                            'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/')
         page.open()
-        assert page.is_not_element_present(*ProductPageLocators.SUCCESSFUL_MESSAGE, timeout=4)
+        page.should_not_be_successful_message_2()

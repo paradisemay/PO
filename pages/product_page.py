@@ -29,3 +29,12 @@ class ProductPage(BasePage):
         assert name in self.name, f'After "{name}" not equal before "{self.name}"'
         price = self.browser.find_element(*ProductPageLocators.AFTER_PRICE_SELECTOR).text.split(' ')[0]
         assert price in self.price, f'After "{price}" not equal before "{self.price}"'
+
+    def should_not_be_successful_message_3(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESSFUL_MESSAGE, timeout=4)
+
+    def should_not_be_successful_message_2(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESSFUL_MESSAGE, timeout=4)
+
+    def should_not_be_successful_message_1(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESSFUL_MESSAGE, timeout=4)

@@ -1,6 +1,3 @@
-# PO
-This repository created **ONLY** for this [module][1]
-
 ###### PO -  Page Object
 
 
